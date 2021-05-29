@@ -13,7 +13,8 @@ import joblib
 
 input_dict={'budget': 0, 
 			'runtime': 1, 
-			'genre': 2}
+			'genre_horror': 2}
+categorical_var=['budget', 'director']
 			# 'genre_horror': 2, 
 			# 'genre_action': 3, 
 			# 'genre_comdey': 4}
