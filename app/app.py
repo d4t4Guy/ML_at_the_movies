@@ -1,9 +1,22 @@
 from flask import Flask, request, jsonify
 import json
 import pickle
+import time
 
 from flask.templating import render_template
 import joblib
+
+### HYPOTHETICAL MAPPER ###
+### DESIRED MODEL INPUT ###
+# [BUDGET, RUN_TIME, GENRE_HORROR, GENRE_ACTION, GENRE_COMEDY]
+# [50000000, 126, 0, 0, 1]
+
+input_dict={'budget': 0, 
+			'runtime': 1, 
+			'genre': 2}
+			# 'genre_horror': 2, 
+			# 'genre_action': 3, 
+			# 'genre_comdey': 4}
 
 # # load the previously persisted ML assets
 with open('rf.joblib', 'rb') as f: 
@@ -26,6 +39,25 @@ app=Flask(__name__)
 @app.route('/')
 def index():
     return render_template("index.html")
+
+@app.route('/predict', methods=['POST'])
+def predict(): 
+	input_ary=[0 for i in range(len(input_dict))]
+	inputs=request.form # inputs is a dictionary
+	for each_key in inputs: 
+		if each_key in input_dict: 
+			input_ary[input_dict[each_key]]=inputs[each_key]
+
+	print(inputs)
+	print(input_ary)
+
+	# input_ary=[float(inputs['runtime']), 
+	# 		   float(inputs['budget'])]
+	# output=model.predict([input_ary]) # 2D array!!! 
+	# gross_rev=output[0] # output is an array! 
+	# return jsonify(gross_rev)
+	return render_template('index.html')#, prediction_text=gross_rev)
+
 @app.route("/send")
 def send():
     return render_template("form.html")
