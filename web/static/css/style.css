@@ -8,6 +8,39 @@ body {
   padding-bottom: 80px;
 }
 
+/* Jumbotron background image */
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  opacity: 0.5;  
+  background: url("../images/denise-jans-tV80374iytg-unsplash.jpg");
+  background-position: center center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  width: 100%;
+  height: 100%;  
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Jumbotron text */
+.jumbotron h1,h2,p {
+  /* margin-top: 0; */
+  text-align: center;
+}
+
+.jumbotron {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+
 .row {
   /* margin-top: 20px; */
   margin-bottom: 20px;
